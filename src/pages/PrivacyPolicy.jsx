@@ -1,5 +1,12 @@
+import { useEffect } from "react";
+import PageHero from "../components/common/PageHero.jsx";
 import { useReveal } from "../hooks/useReveal.js";
 import "./privacy.css";
+
+const PAGE_TITLE = "Privacy Policy | C-Drive Lab";
+const PAGE_DESCRIPTION =
+  "Privacy Policy for C-Drive Lab Pvt. Ltd. — how we collect, use, and protect your personal information across our AI consultancy services.";
+const LAST_UPDATED = "Last Updated: August 2026";
 
 const policySections = [
   {
@@ -10,7 +17,7 @@ const policySections = [
       "<strong>C-Drive Lab Pvt. Ltd.</strong><br/>" +
       "Location: Odisha, India<br/>" +
       "Website: C-Drive Lab<br/>" +
-      "Privacy Contact: <a className=\"inline-link\" href=\"mailto:cdrivelab@gmail.com\">cdrivelab@gmail.com</a><br/><br/>" +
+      "Privacy Contact: <a class=\"inline-link\" href=\"mailto:cdrivelab@gmail.com\">cdrivelab@gmail.com</a><br/><br/>" +
       "If you have questions about how we process your personal information or want to exercise your privacy rights, you can contact us using the details above."
   },
   {
@@ -155,7 +162,7 @@ const policySections = [
     title: "13. How to Exercise Your Rights",
     content:
       "<p>To exercise a privacy right or ask a question about our processing of personal information, contact us at:</p>" +
-      "<div className=\"contact-card\"><p><a className=\"inline-link\" href=\"mailto:cdrivelab@gmail.com\">cdrivelab@gmail.com</a></p></div>" +
+      "<div class=\"contact-card\"><p><a class=\"inline-link\" href=\"mailto:cdrivelab@gmail.com\">cdrivelab@gmail.com</a></p></div>" +
       "<p>Please include enough information for us to understand your request. For security reasons, we may need to verify your identity before fulfilling certain requests.</p>" +
       "<p>We will respond to valid GDPR rights requests without undue delay and generally within the timeframe required by applicable law.</p>"
   },
@@ -211,7 +218,7 @@ const policySections = [
     title: "21. Contact Us",
     content:
       "<p>If you have questions about this Privacy Policy, our data-processing practices, or your privacy rights, please contact:</p>" +
-      "<div className=\"contact-card\"><p><strong>C-Drive Lab Pvt. Ltd.</strong></p><p>Odisha, India</p><p>Email: <a className=\"inline-link\" href=\"mailto:cdrivelab@gmail.com\">cdrivelab@gmail.com</a></p><p>Privacy requests: <em>\"Privacy Request – C-Drive Lab\"</em></p></div>"
+      "<div class=\"contact-card\"><p><strong>C-Drive Lab Pvt. Ltd.</strong></p><p>Odisha, India</p><p>Email: <a class=\"inline-link\" href=\"mailto:cdrivelab@gmail.com\">cdrivelab@gmail.com</a></p><p>Privacy requests: <em>\"Privacy Request – C-Drive Lab\"</em></p></div>"
   },
   {
     id: "s22",
@@ -224,90 +231,64 @@ const policySections = [
       "<li>Applicable data protection laws in jurisdictions where we operate or provide services.</li>" +
       "</ul>" +
       "<p>This Privacy Policy should be read together with our Cookie Policy and Terms of Service, where applicable.</p>" +
-      '<a className="back-top" href="#top">↑ Back to top</a>'
+      '<a class="back-top" href="#top">↑ Back to top</a>'
   }
 ];
 
-document.title = "Privacy Policy | C-Drive Lab";
-
-export default function PrivacyPolicy() {
-  const reveals = useReveal();
-
-  // Add meta description for SEO
-  const existingMeta = document.querySelector('meta[name="description"]');
-  if (existingMeta) {
-    existingMeta.setAttribute(
-      "content",
-      "Privacy Policy for C-Drive Lab Pvt. Ltd. - How we collect, use, and protect your personal information. Read our privacy policy for AI consultancy services."
-    );
-  } else {
-    const meta = document.createElement("meta");
-    meta.name = "description";
-    meta.content =
-      "Privacy Policy for C-Drive Lab Pvt. Ltd. - How we collect, use, and protect your personal information. Read our privacy policy for AI consultancy services.";
-    document.head.appendChild(meta);
-  }
-
-  // Google crawl optimized meta robots
-  const existingRobots = document.querySelector('meta[name="robots"]');
-  if (!existingRobots) {
-    const robots = document.createElement("meta");
-    robots.name = "robots";
-    robots.content = "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
-    document.head.appendChild(robots);
-  }
-
-  // Schema.org Person organization markup
-  const existingSchema = document.querySelector('script[type="application/ld+json"]');
-  if (!existingSchema) {
-    const schema = document.createElement("script");
-    schema.type = "application/ld+json";
-    schema.innerHTML = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "C-Drive Lab Pvt. Ltd.",
-      "description": "AI consultancy and technology engineering for businesses building useful, integrated and responsible AI systems",
-      "url": "https://cdrivelab.com",
-      "logo": "https://cdrivelab.com/favicon.svg",
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "telephone": "+91-674-254-0000",
-        "contactType": "customer service"
-      }]
-    });
-    document.head.appendChild(schema);
-  }
+function PolicySection({ section }) {
+  const heading = useReveal();
 
   return (
-    <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="breadcrumb">
-            <a href="/">Home</a>
-            <span>/</span>
-            <span>Privacy Policy</span>
-          </div>
-          <span className="kicker">Legal & Privacy</span>
-          <h1 data-animate>Privacy Policy</h1>
-          <div className="hero-line" />
-          <div className="updated">Last Updated: August 2026</div>
-        </div>
-      </section>
+    <section className="policy-section" id={section.id}>
+      <h2 {...heading}>{section.title}</h2>
+      <div dangerouslySetInnerHTML={{ __html: section.content }} />
+    </section>
+  );
+}
+
+export default function PrivacyPolicy() {
+  /*
+    Title and description are swapped in an effect and restored on unmount.
+    They used to be written at module scope and during render, which meant
+    they applied the moment App.jsx imported this file — so every page on
+    the site reported the Privacy Policy title. The robots meta and the
+    Organization JSON-LD are static site-wide facts and now live in
+    index.html rather than being injected here.
+  */
+  useEffect(() => {
+    const meta = document.querySelector('meta[name="description"]');
+    const previousTitle = document.title;
+    const previousDescription = meta ? meta.getAttribute("content") : null;
+
+    document.title = PAGE_TITLE;
+    if (meta) meta.setAttribute("content", PAGE_DESCRIPTION);
+
+    return () => {
+      document.title = previousTitle;
+      if (meta && previousDescription !== null) {
+        meta.setAttribute("content", previousDescription);
+      }
+    };
+  }, []);
+
+  return (
+    <div id="top">
+      <PageHero title="Privacy Policy">
+        <p className="policy-updated">{LAST_UPDATED}</p>
+      </PageHero>
 
       <div className="doc">
         <div className="container">
           {policySections.map((section) => (
-            <section key={section.id} id={section.id} style={{ scrollMarginTop: "105px", marginBottom: "48px" }}>
-              <h2 data-animate>{section.title}</h2>
-              <div dangerouslySetInnerHTML={{ __html: section.content }} />
-            </section>
+            <PolicySection section={section} key={section.id} />
           ))}
 
           <div className="policy-note">
-            Last Updated: August 2026 · © 2026 C-Drive Lab Pvt. Ltd. All rights reserved.
+            {LAST_UPDATED} · © {new Date().getFullYear()} C-Drive Lab Pvt. Ltd.
+            All rights reserved.
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

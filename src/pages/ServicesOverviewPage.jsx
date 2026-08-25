@@ -10,14 +10,14 @@ import "./services.css";
 
 export default function ServicesOverviewPage() {
   const [activeFilter, setActiveFilter] = useState("all");
-  const head = useReveal();
+  const head = useReveal(0, "section-head");
 
   return (
     <>
       <PageHero title="Services" />
 
       <section className="section" style={{ paddingTop: "20px" }}>
-        <div className="section-head" {...head}>
+        <div {...head}>
           <span className="kicker">What We Do</span>
           <h2>Ten services, one accountable team.</h2>
           <p>

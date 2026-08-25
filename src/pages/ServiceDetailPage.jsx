@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import PageHero from "../components/common/PageHero.jsx";
 import RelatedServices from "../components/services/RelatedServices.jsx";
@@ -14,12 +13,8 @@ const CheckIcon = () => (
 export default function ServiceDetailPage() {
   const { slug } = useParams();
   const service = getServiceBySlug(slug);
-  const intro = useReveal();
-  const list = useReveal(100);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
+  const intro = useReveal(0, "service-detail-intro");
+  const list = useReveal(100, "service-detail-list");
 
   if (!service) return <Navigate to="/services" replace />;
 
@@ -28,13 +23,13 @@ export default function ServiceDetailPage() {
       <PageHero title={service.name} parent={{ label: "Services", to: "/services" }} />
 
       <section className="section" style={{ paddingTop: "20px" }}>
-        <div className="service-detail-intro" {...intro}>
+        <div {...intro}>
           <span className="kicker">{service.number} / {service.category.toUpperCase()}</span>
           <h2>{service.tagline}</h2>
           <p>{service.detail.intro}</p>
         </div>
 
-        <div className="service-detail-list" {...list}>
+        <div {...list}>
           <h3>What this covers</h3>
           <ul className="checklist">
             {service.detail.deliverables.map((item) => (

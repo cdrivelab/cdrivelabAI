@@ -1,7 +1,7 @@
 import { useReveal } from "../../hooks/useReveal.js";
 import { useCounter } from "../../hooks/useCounter.js";
-// import "./stats-grid.css";
 import "./common-ui.css";
+
 function StatItem({ stat }) {
   const { ref, value } = useCounter(stat.value);
   return (
@@ -13,9 +13,12 @@ function StatItem({ stat }) {
 }
 
 export default function StatsGrid({ stats, delay = 0 }) {
-  const reveal = useReveal(delay);
+  const reveal = useReveal(delay, "stats-band");
   return (
-    <div className="stats-band" style={{ gridTemplateColumns: `repeat(${stats.length}, 1fr)` }} {...reveal}>
+    <div
+      {...reveal}
+      style={{ ...reveal.style, gridTemplateColumns: `repeat(${stats.length}, 1fr)` }}
+    >
       {stats.map((stat) => <StatItem stat={stat} key={stat.label} />)}
     </div>
   );

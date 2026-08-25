@@ -3,9 +3,9 @@ import { processSteps } from "../../../data/siteConfig.js";
 import "./process.css";
 
 function ProcessStep({ step, index }) {
-  const reveal = useReveal(index * 90);
+  const reveal = useReveal(index * 90, "process-step");
   return (
-    <div className="process-step" {...reveal}>
+    <div {...reveal}>
       <div className="process-num">{step.num}</div>
       <h4>{step.title}</h4>
       <p>{step.description}</p>
@@ -14,10 +14,10 @@ function ProcessStep({ step, index }) {
 }
 
 export default function Process() {
-  const head = useReveal();
+  const head = useReveal(0, "section-head");
   return (
     <section className="section" id="process">
-      <div className="section-head" {...head}>
+      <div {...head}>
         <span className="kicker">How It Works</span>
         <h2>From first call to shipped AI system</h2>
       </div>

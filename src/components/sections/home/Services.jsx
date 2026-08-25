@@ -12,10 +12,10 @@ const icons = [
 ];
 
 export default function Services() {
-  const head = useReveal();
+  const head = useReveal(0, "section-head");
   return (
     <section className="section" id="services">
-      <div className="section-head" {...head}>
+      <div {...head}>
         <span className="kicker">What We Do</span>
         <h2>Services built for measurable AI outcomes</h2>
         <p>From strategy to deployment, every engagement is designed around one goal — AI that actually moves your business metrics.</p>

@@ -1,3 +1,12 @@
+:root {
+  /*
+    Native controls — select popups, scrollbars, autofill, date pickers —
+    are painted by the browser, not by our CSS. Without this they render in
+    light mode (white list, blue highlight) against the dark theme.
+  */
+  color-scheme: dark;
+}
+
 body {
   background: var(--color-bg);
   overflow-x: hidden;
@@ -248,21 +257,28 @@ body {
 }
 
 /* --- Reveal on scroll --- */
+/*
+  Deliberately uses `translate` rather than `transform`. A revealed element
+  usually also carries its own :hover transform (card lift, tilt), and
+  `[data-animate].in-view` ties that rule on specificity (0,2,0) while
+  landing later in the bundle — so a shared `transform` would silently
+  cancel every hover lift on the site. Separate properties can't collide.
+*/
 [data-animate] {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  translate: 0 22px;
+  transition: opacity 0.7s ease, translate 0.7s ease;
 }
 
 [data-animate].in-view {
   opacity: 1;
-  transform: translateY(0);
+  translate: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-animate] {
     opacity: 1;
-    transform: none;
+    translate: none;
     transition: none;
   }
 

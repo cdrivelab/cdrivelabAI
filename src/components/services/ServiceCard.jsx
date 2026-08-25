@@ -4,16 +4,14 @@ import { useTilt } from "../../hooks/useTilt.js";
 import ServiceIcon from "./ServiceIcon.jsx";
 
 export default function ServiceCard({ service, index = 0, isHidden = false }) {
-  const reveal = useReveal(Math.min(index, 6) * 60);
-  const tiltRef = useTilt();
+  const reveal = useReveal(
+    Math.min(index, 6) * 60,
+    `service-card ${isHidden ? "is-hidden" : ""}`
+  );
+  useTilt(reveal.ref);
 
   return (
-    <Link
-      to={`/services/${service.slug}`}
-      className={`service-card ${isHidden ? "is-hidden" : ""}`}
-      ref={tiltRef}
-      {...reveal}
-    >
+    <Link to={`/services/${service.slug}`} {...reveal}>
       <span className="service-card__num">{service.number} / {service.category.toUpperCase()}</span>
       <div className="icon-chip"><ServiceIcon name={service.icon} /></div>
       <h3>{service.name}</h3>

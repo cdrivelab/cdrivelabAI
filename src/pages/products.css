@@ -1,0 +1,924 @@
+/*
+  Products page — hero, ScrumPilot feature, Available24 platform, other
+  products grid, closing CTA.
+
+  Class names are prefixed (products-/product-/sp-/a24-/p-) on purpose:
+  Vite bundles every stylesheet into one global sheet, and unprefixed
+  names from the source design (.hero, .pill, .stats, .service, .phone,
+  .chart, .metric) already exist elsewhere in this project.
+
+  Colours, type and easing all come from the shared tokens — nothing here
+  redefines a global.
+*/
+
+/* =============== Shared bits =============== */
+.p-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--color-ink-secondary);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+}
+
+.p-eyebrow__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent-1);
+    box-shadow: 0 0 18px var(--color-accent-1);
+    flex-shrink: 0;
+}
+
+.products-section {
+    padding: 90px 0;
+}
+
+.products-section-title {
+    font-size: clamp(38px, 5vw, 72px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    max-width: 850px;
+    margin-top: 22px;
+}
+
+.product-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 26px;
+}
+
+.product-pill {
+    border: 1px solid var(--color-line);
+    background: rgba(242, 236, 224, 0.025);
+    padding: 8px 11px;
+    border-radius: 999px;
+    font-size: 11px;
+    color: #c9c2b7;
+}
+
+.product-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: var(--color-ink-secondary);
+}
+
+.product-status::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 12px var(--color-success);
+    flex-shrink: 0;
+}
+
+/* =============== Hero =============== */
+.products-hero {
+    min-height: 78vh;
+    display: grid;
+    align-items: center;
+    padding: 70px 0 80px;
+}
+
+.products-hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 0.72fr;
+    gap: 80px;
+    align-items: end;
+}
+
+.products-hero__title {
+    font-weight: 800;
+    font-size: clamp(46px, 7vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+    max-width: 900px;
+    margin-top: 22px;
+}
+
+.products-hero__title em {
+    font-style: normal;
+}
+
+.products-hero__sub {
+    max-width: 620px;
+    color: var(--color-ink-secondary);
+    font-size: 18px;
+    line-height: 1.7;
+    margin-top: 30px;
+}
+
+.products-hero__cue {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 48px;
+    color: var(--color-ink-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.products-hero__cue-line {
+    width: 42px;
+    height: 1px;
+    background: var(--color-line);
+    flex-shrink: 0;
+}
+
+.products-hero__side {
+    padding-bottom: 7px;
+}
+
+.products-hero__card {
+    border-left: 1px solid var(--color-line);
+    padding-left: 28px;
+}
+
+.products-hero__card strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.35;
+}
+
+.products-hero__card p {
+    margin-top: 12px;
+    color: var(--color-ink-secondary);
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+/* =============== ScrumPilot feature =============== */
+.product-feature {
+    display: block;
+    margin-top: 70px;
+    border: 1px solid var(--color-line);
+    border-radius: 34px;
+    overflow: hidden;
+    background: linear-gradient(145deg, rgba(242, 236, 224, 0.045), rgba(242, 236, 224, 0.012));
+    position: relative;
+}
+
+.product-feature::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    right: -180px;
+    top: -180px;
+    background: radial-gradient(circle, rgba(224, 130, 79, 0.17), transparent 67%);
+    pointer-events: none;
+}
+
+.product-feature__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.04fr;
+    min-height: 610px;
+}
+
+.product-feature__copy {
+    padding: 62px 58px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+
+.product-feature__number {
+    font-size: 12px;
+    color: var(--color-ink-muted);
+    letter-spacing: 0.12em;
+}
+
+.product-feature__name {
+    font-weight: 800;
+    font-size: clamp(45px, 5vw, 76px);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    margin-top: 18px;
+}
+
+.product-feature__kicker {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-top: 22px;
+}
+
+.product-feature__desc {
+    color: var(--color-ink-secondary);
+    line-height: 1.7;
+    max-width: 540px;
+    margin-top: 16px;
+    font-size: 15px;
+}
+
+.product-feature__who {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-top: 24px;
+    margin-bottom: 10px;
+}
+
+.product-feature__bottom {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+}
+
+/* --- ScrumPilot dashboard mockup --- */
+.sp-visual {
+    margin: 20px;
+    border-radius: 25px;
+    border: 1px solid var(--color-line);
+    background:
+        radial-gradient(circle at 75% 18%, rgba(224, 130, 79, 0.22), transparent 25%),
+        linear-gradient(145deg, var(--color-bg-card-2), #120d08);
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.sp-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(242, 236, 224, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(242, 236, 224, 0.045) 1px, transparent 1px);
+    background-size: 42px 42px;
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 75%);
+    mask-image: radial-gradient(circle at center, black, transparent 75%);
+}
+
+.sp-dash {
+    position: relative;
+    width: 82%;
+    height: 72%;
+    border: 1px solid rgba(242, 236, 224, 0.13);
+    border-radius: 18px;
+    background: rgba(18, 13, 8, 0.88);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
+    transform: rotate(-3deg);
+    transition: transform 0.8s var(--ease-standard);
+    overflow: hidden;
+}
+
+.product-feature:hover .sp-dash {
+    transform: rotate(0) translateY(-8px);
+}
+
+.sp-dash__top {
+    height: 46px;
+    border-bottom: 1px solid var(--color-line);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 15px;
+}
+
+.sp-dash__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #5a5248;
+    flex-shrink: 0;
+}
+
+.sp-dash__title {
+    margin-left: auto;
+    margin-right: auto;
+    color: #8f867c;
+    font-size: 9px;
+}
+
+.sp-dash__body {
+    display: grid;
+    grid-template-columns: 34% 1fr;
+    height: calc(100% - 46px);
+}
+
+.sp-dash__side {
+    border-right: 1px solid var(--color-line);
+    padding: 18px;
+}
+
+.sp-dash__side-label {
+    height: 7px;
+    width: 65%;
+    background: #332a1f;
+    border-radius: 5px;
+    margin-bottom: 16px;
+}
+
+.sp-dash__side-item {
+    height: 27px;
+    border-radius: 7px;
+    margin: 7px 0;
+    background: rgba(242, 236, 224, 0.035);
+}
+
+.sp-dash__side-item.is-active {
+    background: rgba(194, 90, 52, 0.18);
+    border: 1px solid rgba(194, 90, 52, 0.28);
+}
+
+.sp-dash__main {
+    padding: 20px;
+}
+
+.sp-dash__heading {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.sp-dash__sub {
+    font-size: 9px;
+    color: #847a6d;
+    margin-top: 7px;
+}
+
+.sp-dash__metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.sp-dash__metric {
+    padding: 13px;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    background: rgba(242, 236, 224, 0.025);
+}
+
+.sp-dash__metric small {
+    font-size: 8px;
+    color: #847a6d;
+}
+
+.sp-dash__metric b {
+    display: block;
+    margin-top: 6px;
+    font-size: 15px;
+}
+
+.sp-dash__chart {
+    height: 105px;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 14px;
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.sp-dash__bar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(to top, var(--color-accent-1), rgba(224, 130, 79, 0.2));
+}
+
+/* =============== Available24 =============== */
+.a24-card {
+    display: block;
+    margin-top: 70px;
+    border-radius: 34px;
+    border: 1px solid var(--color-line);
+    overflow: hidden;
+    background: linear-gradient(140deg, rgba(194, 90, 52, 0.09), rgba(242, 236, 224, 0.015));
+}
+
+.a24-card__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 570px;
+}
+
+.a24-card__copy {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.a24-card__label {
+    color: var(--color-accent-1);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 800;
+}
+
+.a24-card__title {
+    font-weight: 800;
+    font-size: clamp(44px, 5vw, 74px);
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+    margin-top: 18px;
+}
+
+.a24-card__desc {
+    color: var(--color-ink-secondary);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-top: 22px;
+    font-size: 15px;
+}
+
+.a24-card__cta {
+    margin-top: 34px;
+}
+
+.a24-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--color-line);
+    margin-top: 38px;
+    padding-top: 24px;
+    gap: 12px;
+}
+
+.a24-stat b {
+    font-family: var(--font-display);
+    font-size: 26px;
+    letter-spacing: -0.04em;
+}
+
+.a24-stat span {
+    display: block;
+    color: var(--color-ink-secondary);
+    font-size: 9.5px;
+    margin-top: 5px;
+}
+
+/* --- Available24 phone mockup --- */
+.a24-visual {
+    margin: 20px;
+    border-radius: 25px;
+    border: 1px solid var(--color-line);
+    background:
+        radial-gradient(circle at 35% 30%, rgba(224, 130, 79, 0.24), transparent 30%),
+        #171310;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.a24-phone {
+    width: 205px;
+    height: 410px;
+    border: 7px solid var(--color-bg-card-2);
+    border-radius: 31px;
+    background: #120d08;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
+}
+
+.a24-phone__notch {
+    width: 70px;
+    height: 17px;
+    background: var(--color-bg-card-2);
+    border-radius: 0 0 13px 13px;
+    margin: auto;
+}
+
+.a24-phone__screen {
+    padding: 17px;
+}
+
+.a24-phone__logo {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--color-accent-1);
+    letter-spacing: 0.04em;
+}
+
+.a24-phone__headline {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: 24px;
+    line-height: 1;
+}
+
+.a24-phone__search {
+    height: 28px;
+    border-radius: 8px;
+    background: var(--color-bg-card);
+    margin-top: 15px;
+    border: 1px solid var(--color-bg-card-2);
+}
+
+.a24-phone__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.a24-service {
+    height: 65px;
+    border-radius: 10px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-bg-card-2);
+    padding: 9px;
+    font-size: 8px;
+    color: var(--color-ink-secondary);
+}
+
+.a24-service strong {
+    display: block;
+    color: var(--color-ink);
+    font-size: 10px;
+    margin-bottom: 6px;
+}
+
+.a24-status-card {
+    position: absolute;
+    width: 170px;
+    padding: 15px;
+    border-radius: 14px;
+    border: 1px solid var(--color-line);
+    background: rgba(20, 17, 9, 0.88);
+    backdrop-filter: blur(12px);
+    right: 8%;
+    bottom: 18%;
+    z-index: 3;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.a24-status-card small {
+    color: #8c8375;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.a24-status-card b {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.a24-status-card__check {
+    color: var(--color-success);
+    display: flex;
+    flex-shrink: 0;
+}
+
+.a24-status-card__note {
+    display: block;
+    margin-top: 6px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* =============== Other products =============== */
+.products-other {
+    padding: 100px 0;
+}
+
+.products-other__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.products-other__head p {
+    color: var(--color-ink-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 390px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 55px;
+}
+
+.product-card {
+    min-height: 280px;
+    border: 1px solid var(--color-line);
+    border-radius: 23px;
+    padding: 28px;
+    background: rgba(242, 236, 224, 0.018);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.45s var(--ease-standard), background 0.45s ease, border-color 0.45s ease, opacity 0.7s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -100px;
+    top: -100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(194, 90, 52, 0.12), transparent 70%);
+    pointer-events: none;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    background: rgba(242, 236, 224, 0.035);
+    border-color: rgba(242, 236, 224, 0.16);
+}
+
+.product-card__index {
+    color: var(--color-ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+}
+
+.product-card__icon {
+    margin-top: 38px;
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    border: 1px solid var(--color-line);
+    display: grid;
+    place-items: center;
+    color: var(--color-accent-1);
+    font-size: 18px;
+}
+
+.product-card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: -0.03em;
+    margin-top: 18px;
+}
+
+.product-card p {
+    color: var(--color-ink-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 9px;
+}
+
+.product-card__tech {
+    margin-top: auto;
+    padding-top: 22px;
+    color: var(--color-ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+}
+
+.product-card__note {
+    margin-top: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #d8d3ca;
+}
+
+/* =============== Closing CTA =============== */
+.products-cta-section {
+    padding: 70px 0 110px;
+}
+
+.products-cta {
+    border: 1px solid var(--color-line);
+    border-radius: 30px;
+    padding: 70px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 100%, rgba(194, 90, 52, 0.16), transparent 48%),
+        rgba(242, 236, 224, 0.018);
+}
+
+.products-cta h2 {
+    font-weight: 800;
+    font-size: clamp(38px, 5.5vw, 68px);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+    margin-top: 16px;
+}
+
+.products-cta p {
+    color: var(--color-ink-secondary);
+    margin: 20px auto 30px;
+    max-width: 540px;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* =============== Product detail pages =============== */
+.product-detail {
+    padding-top: 20px;
+}
+
+.product-detail__head {
+    max-width: 760px;
+}
+
+.product-detail__head h2 {
+    font-size: clamp(30px, 3.8vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    margin-top: 18px;
+}
+
+.product-detail__head p {
+    color: var(--color-ink-secondary);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-top: 20px;
+}
+
+.product-detail__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+/* The visuals carry their own 20px margin, so the panel only frames them. */
+.product-detail__panel {
+    margin-top: 50px;
+    border: 1px solid var(--color-line);
+    border-radius: 34px;
+    overflow: hidden;
+    background: linear-gradient(145deg, rgba(242, 236, 224, 0.045), rgba(242, 236, 224, 0.012));
+}
+
+/* Standalone dashboard sits square — nothing hovers it on a detail page. */
+.sp-visual--flat .sp-dash {
+    transform: none;
+}
+
+.product-detail__stats {
+    margin-top: 46px;
+    border-top: 1px solid var(--color-line);
+    padding-top: 24px;
+}
+
+.product-detail__split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.product-detail__col h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.product-detail__col .product-pills {
+    margin-top: 22px;
+}
+
+.product-detail__note {
+    color: var(--color-ink-secondary);
+    font-size: 15px;
+    line-height: 1.75;
+    margin-top: 18px;
+}
+
+.product-detail__back {
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--color-accent-1);
+}
+
+/* =============== Responsive =============== */
+@media (max-width: 1100px) {
+    .products-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .products-hero__inner,
+    .product-feature__grid,
+    .a24-card__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .products-hero {
+        min-height: auto;
+        padding-top: 40px;
+    }
+
+    .products-hero__side {
+        margin-top: 30px;
+    }
+
+    .sp-visual,
+    .a24-visual {
+        min-height: 480px;
+    }
+
+    .product-feature__copy,
+    .a24-card__copy {
+        padding: 45px 35px;
+    }
+
+    .products-other__head {
+        display: block;
+    }
+
+    .products-other__head p {
+        margin-top: 20px;
+        max-width: none;
+    }
+
+    .product-detail__split {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .products-hero {
+        padding: 30px 0 60px;
+    }
+
+    .products-hero__title {
+        font-size: clamp(46px, 15vw, 72px);
+    }
+
+    .products-section,
+    .products-other,
+    .products-cta-section {
+        padding: 60px 0;
+    }
+
+    .product-feature,
+    .a24-card {
+        border-radius: 23px;
+    }
+
+    .product-feature__copy,
+    .a24-card__copy {
+        padding: 32px 24px;
+    }
+
+    .sp-visual,
+    .a24-visual {
+        margin: 10px;
+        min-height: 390px;
+        border-radius: 18px;
+    }
+
+    .sp-dash {
+        width: 90%;
+        height: 70%;
+    }
+
+    .a24-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        min-height: 245px;
+    }
+
+    .products-cta {
+        padding: 45px 24px;
+    }
+
+    .product-detail__panel {
+        border-radius: 23px;
+    }
+}

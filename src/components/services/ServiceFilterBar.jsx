@@ -2,10 +2,10 @@ import { useReveal } from "../../hooks/useReveal.js";
 import { CATEGORIES } from "../../data/services.js";
 
 export default function ServiceFilterBar({ active, onSelect }) {
-  const reveal = useReveal();
+  const reveal = useReveal(0, "filter-row");
 
   return (
-    <div className="filter-row" {...reveal}>
+    <div {...reveal}>
       {CATEGORIES.map((cat) => (
         <button
           type="button"

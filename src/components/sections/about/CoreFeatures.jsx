@@ -1,6 +1,7 @@
+import ActionLink from "../../common/ActionLink.jsx";
 import { useReveal } from "../../../hooks/useReveal.js";
 import CtaBand from "../../common/CtaBand.jsx";
-import { coreFeatures } from "../../../data/siteConfig.js";
+import { coreFeatures, CONTACT_HREF } from "../../../data/siteConfig.js";
 
 const SparkleIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" /></svg>
@@ -19,11 +20,11 @@ const icons = [
 ];
 
 function FeatureCard({ feature, icon }) {
-  const reveal = useReveal();
   const variantClass = feature.variant ? `feature-card--${feature.variant}` : "";
+  const reveal = useReveal(0, `icon-card ${variantClass}`);
 
   return (
-    <div className={`icon-card ${variantClass}`} {...reveal}>
+    <div {...reveal}>
       <div className="icon-chip">{icon}</div>
       <h3>{feature.title}</h3>
       <p>{feature.description}</p>
@@ -46,20 +47,20 @@ function FeatureCard({ feature, icon }) {
       )}
 
       {feature.hasLink && (
-        <a href="#contact" className="feature-link">
+        <ActionLink href={CONTACT_HREF} className="feature-link">
           Get In Touch <ArrowIcon />
-        </a>
+        </ActionLink>
       )}
     </div>
   );
 }
 
 export default function CoreFeatures() {
-  const head = useReveal();
+  const head = useReveal(0, "section-head");
 
   return (
-    <section className="section" id="services">
-      <div className="section-head" {...head}>
+    <section className="section" id="core-features">
+      <div {...head}>
         <span className="kicker">Core Features</span>
         <h2>Scalable AI business features</h2>
         <p>Our AI-powered features are designed to help businesses operate smarter and more efficiently. Every feature is built to scale with the business, not outgrow it.</p>

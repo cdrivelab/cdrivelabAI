@@ -1,7 +1,8 @@
+import ActionLink from "../../common/ActionLink.jsx";
 import { useReveal } from "../../../hooks/useReveal.js";
 import { useCounter } from "../../../hooks/useCounter.js";
 import LogoTicker from "../../sections/home/LogoTicker.jsx";
-import { aboutIntro } from "../../../data/siteConfig.js";
+import { aboutIntro, CONTACT_HREF } from "../../../data/siteConfig.js";
 import "./about-intro.css";
 
 const ArrowIcon = () => (
@@ -24,22 +25,22 @@ const SparkleIcon = () => (
 );
 
 export default function AboutIntro() {
-  const badge = useReveal();
+  const badge = useReveal(0, "badge about-badge");
   const heading = useReveal(80);
-  const row = useReveal(160);
+  const row = useReveal(160, "agency-row");
   const { ref: countRef, value } = useCounter(aboutIntro.bigStat.value, 2000);
 
   return (
     <section className="section" style={{ paddingTop: "20px" }}>
       <div className="agency-head">
-        <div className="badge about-badge" {...badge}>
+        <div {...badge}>
           <SparkleIcon />
           {aboutIntro.kicker}
         </div>
         <h2 {...heading}>{aboutIntro.heading}</h2>
       </div>
 
-      <div className="agency-row" {...row}>
+      <div {...row}>
         <div className="agency-stat">
           <div className="agency-stat__count" ref={countRef}>
   {value}+
@@ -53,10 +54,10 @@ export default function AboutIntro() {
           <p className="mission-lead">{aboutIntro.missionLead}</p>
           <p className="agency-body">{aboutIntro.body}</p>
           <div className="agency-cta-row">
-            <a href="#contact" className="btn btn-primary">
+            <ActionLink href={CONTACT_HREF} className="btn btn-primary">
               {aboutIntro.ctaLabel}
               <span className="icon-circle"><ArrowIcon /></span>
-            </a>
+            </ActionLink>
             <div className="agency-second-stat">
               <div className="avatar-stack">
                 {aboutIntro.secondStat.initials.map((i) => <div className="av" key={i}>{i}</div>)}
