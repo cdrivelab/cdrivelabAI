@@ -10,9 +10,9 @@ const LinkedInIcon = () => (
 );
 
 function TeamCard({ member, index }) {
-  const reveal = useReveal(index * 90);
+  const reveal = useReveal(index * 90, "team-card");
   return (
-    <div className="team-card" {...reveal}>
+    <div {...reveal}>
       <div className="team-avatar">{member.initials}</div>
       <h3>{member.name}</h3>
       <div className="role">{member.role}</div>
@@ -25,10 +25,10 @@ function TeamCard({ member, index }) {
 }
 
 export default function OurTeam() {
-  const head = useReveal();
+  const head = useReveal(0, "section-head");
   return (
     <section className="section">
-      <div className="section-head" {...head}>
+      <div {...head}>
         <span className="kicker">Our Team</span>
         <h2>Meet our AI specialists</h2>
         <p>Our team combines engineering, data science, and industry experience to deliver AI that actually ships.</p>

@@ -1,3 +1,5 @@
+import ActionLink from "./ActionLink.jsx";
+import { CONTACT_HREF } from "../../data/siteConfig.js";
 import { useReveal } from "../../hooks/useReveal.js";
 import "./common-ui.css";
 
@@ -10,10 +12,10 @@ const StarIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.4 7 .7-5.3 4.6 1.6 6.9L12 17l-6.2 3.6 1.6-6.9L2.1 9.1l7-.7L12 2z" /></svg>
 );
 
-export default function CtaBand({ heading, buttonLabel, buttonHref = "#contact", rating, style }) {
-  const reveal = useReveal();
+export default function CtaBand({ heading, buttonLabel, buttonHref = CONTACT_HREF, rating, style }) {
+  const reveal = useReveal(0, "cta-band");
   return (
-    <div className="cta-band" style={style} {...reveal}>
+    <div {...reveal} style={{ ...reveal.style, ...style }}>
       {rating && (
         <div className="cta-rating">
           <div className="stars">
@@ -23,10 +25,10 @@ export default function CtaBand({ heading, buttonLabel, buttonHref = "#contact",
         </div>
       )}
       <h2>{heading}</h2>
-      <a href={buttonHref} className="btn btn-primary">
+      <ActionLink href={buttonHref} className="btn btn-primary">
         {buttonLabel}
         <span className="icon-circle"><ArrowIcon /></span>
-      </a>
+      </ActionLink>
     </div>
   );
 }

@@ -2,10 +2,17 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Scroll-reveal hook. Mirrors the reference's [data-animate] +
- * IntersectionObserver pattern: spread { ref, className } onto any
- * element and it fades/slides in once, the first time it enters view.
+ * IntersectionObserver pattern: spread the result onto any element and it
+ * fades/slides in once, the first time it enters view.
+ *
+ * Pass the element's own classes as `baseClassName` rather than writing a
+ * separate className prop — the spread would overwrite that prop and the
+ * element would lose its styling.
+ *
+ *   const head = useReveal(0, "section-head");
+ *   <div {...head}>…</div>
  */
-export function useReveal(delay = 0) {
+export function useReveal(delay = 0, baseClassName = "") {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
@@ -30,7 +37,7 @@ export function useReveal(delay = 0) {
   return {
     ref,
     "data-animate": "",
-    className: inView ? "in-view" : "",
+    className: [baseClassName, inView && "in-view"].filter(Boolean).join(" "),
     style: { transitionDelay: `${delay}ms` },
   };
 }

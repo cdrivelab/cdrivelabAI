@@ -1,165 +1,149 @@
-/* Privacy Policy specific styles */
+/*
+  Privacy Policy — long-form legal document layout.
+
+  This file previously used camelCase property names (fontSize, marginBottom)
+  which are not valid CSS and were dropped by the parser, and referenced the
+  reference mock-up's token names (--panel, --text-secondary, --accent-1)
+  which don't exist in this project. Both are corrected here, and the unused
+  selectors for a quick-jump nav that the page never rendered are removed.
+*/
+
+.policy-updated {
+    margin-top: 20px;
+    color: var(--color-ink-muted);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
 .doc {
-  width: min(1280px, calc(100% - 48px));
-  margin: 0 auto;
-  padding-bottom: 100px;
+    padding-bottom: 100px;
 }
 
-.policy-intro {
-  margin-bottom: 34px;
-  padding: 30px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: linear-gradient(145deg, rgba(36, 29, 18, .78), rgba(30, 24, 16, .72));
-  box-shadow: 0 20px 44px rgba(0, 0, 0, .12);
+.doc a {
+    color: var(--color-accent-1);
 }
 
-.policy-intro p {
-  color: var(--text-secondary);
-  font-size: 15px;
-  line-height: 1.85;
-}
-
-.policy-intro p + p { margin-top: 14px }
-
-.quick-jump {
-  margin-bottom: 54px;
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--panel);
-}
-
-.quick-title {
-  margin-bottom: 16px;
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.quick-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 5px 18px;
-}
-
-.quick-grid a {
-  padding: 8px 10px;
-  border-radius: 8px;
-  color: var(--text-secondary);
-  font-size: 13px;
-  transition: .2s ease;
-}
-
-.quick-grid a:hover {
-  color: var(--accent-1);
-  background: rgba(194, 90, 52, .06);
+.doc a:hover {
+    text-decoration: underline;
 }
 
 .policy-section {
-  position: relative;
-  scroll-margin-top: 105px;
-  margin-bottom: 48px;
+    position: relative;
+    scroll-margin-top: 105px;
+    margin-bottom: 48px;
+    padding-left: 20px;
 }
 
+/* Accent bar marking the start of each numbered clause. */
 .policy-section::before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 5px;
-  width: 3px;
-  height: 22px;
-  border-radius: 4px;
-  background: linear-gradient(var(--accent-1), var(--accent-2));
-  opacity: .8;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 3px;
+    height: 22px;
+    border-radius: 4px;
+    background: linear-gradient(var(--color-accent-1), var(--color-accent-2));
+    opacity: 0.8;
 }
 
 .policy-section h2 {
-  margin-bottom: 16px;
-  fontFamily: "Manrope", sans-serif;
-  fontSize: 24px;
-  lineHeight: 1.25;
-  letterSpacing: -.025em;
+    margin-bottom: 16px;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
 }
 
 .policy-section h3 {
-  margin: 25px 0 9px;
-  color: var(--text-primary);
-  fontFamily: "Manrope", sans-serif;
-  fontSize: 16px;
+    margin: 25px 0 9px;
+    color: var(--color-ink);
+    font-size: 16px;
 }
 
 .policy-section p,
 .policy-section li {
-  color: var(--text-secondary);
-  fontSize: 14.5px;
-  lineHeight: 1.85;
+    color: var(--color-ink-secondary);
+    font-size: 14.5px;
+    line-height: 1.85;
 }
 
-.policy-section p { marginBottom: 14px }
+.policy-section p {
+    margin-bottom: 14px;
+}
 
+/* reset.css clears list-style globally, so it has to come back here
+   for the bullets — and their ::marker — to render at all. */
 .policy-section ul {
-  margin: 0 0 17px;
-  paddingLeft: 21px;
+    margin: 0 0 17px;
+    padding-left: 21px;
+    list-style: disc;
 }
 
-.policy-section li { marginBottom: 7px }
+.policy-section li {
+    margin-bottom: 7px;
+}
 
-.policy-section li::marker { color: var(--accent-1) }
+.policy-section li::marker {
+    color: var(--color-accent-1);
+}
 
-.policy-section strong { color: var(--text-primary) }
+.policy-section strong {
+    color: var(--color-ink);
+}
 
 .inline-link {
-  color: var(--accent-1);
-  textDecoration: underline;
-  textDecorationColor: rgba(224, 130, 79, .35);
-  textUnderlineOffset: 3px;
+    color: var(--color-accent-1);
+    text-decoration: underline;
+    text-decoration-color: rgba(224, 130, 79, 0.35);
+    text-underline-offset: 3px;
 }
 
 .contact-card {
-  margin: 18px 0;
-  padding: 22px 24px;
-  border: 1px solid rgba(194, 90, 52, .2);
-  borderRadius: 18px;
-  background: linear-gradient(145deg, rgba(194, 90, 52, .075), rgba(30, 24, 16, .8));
+    margin: 18px 0;
+    padding: 22px 24px;
+    border: 1px solid rgba(194, 90, 52, 0.2);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(194, 90, 52, 0.075), rgba(30, 24, 16, 0.8));
 }
 
-.contact-card p { marginBottom: 4px }
+.contact-card p {
+    margin-bottom: 4px;
+}
+
+.contact-card p:last-child {
+    margin-bottom: 0;
+}
 
 .back-top {
-  display: inline-flex;
-  alignItems: center;
-  gap: 8px;
-  marginTop: 6px;
-  color: var(--accent-1);
-  fontSize: 13px;
-  fontWeight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    color: var(--color-accent-1);
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .policy-note {
-  paddingTop: 25px;
-  borderTop: 1px solid var(--border-soft);
-  color: var(--text-muted);
-  fontSize: 13px;
-}
-
-/* Ensure links within policy content work */
-.doc a { color: var(--accent-1); textDecoration: "none" }
-
-.doc a:hover { textDecoration: underline; }
-
-@media (max-width: 1024px) {
-  .doc { width: min(1280px, calc(100% - 40px)) }
+    margin-left: 20px;
+    padding-top: 25px;
+    border-top: 1px solid var(--color-line-soft);
+    color: var(--color-ink-muted);
+    font-size: 13px;
 }
 
 @media (max-width: 700px) {
-  .doc { width: min(1280px, calc(100% - 32px)) }
-  .quick-grid { grid-template-columns: 1fr }
-}
+    .policy-section {
+        padding-left: 0;
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  .doc h2,
-  .policy-section h3 { transition: none }
+    .policy-section::before {
+        display: none;
+    }
+
+    .policy-note {
+        margin-left: 0;
+    }
 }

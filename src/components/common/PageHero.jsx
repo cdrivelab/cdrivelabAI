@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { useReveal } from "../../hooks/useReveal.js";
 import "./page-hero.css";
 
-export default function PageHero({ title, parent }) {
+export default function PageHero({ title, parent, children }) {
   const heading = useReveal();
-  const crumb = useReveal(80);
+  const crumb = useReveal(80, "breadcrumb");
 
   const words = title.trim().split(" ");
   const lastWord = words.pop();
@@ -16,7 +16,7 @@ export default function PageHero({ title, parent }) {
         {leadWords ? `${leadWords} ` : ""}
         <span className="accent-text">{lastWord}</span>
       </h1>
-      <div className="breadcrumb" {...crumb}>
+      <div {...crumb}>
         <Link to="/">Home</Link>
         <span className="sep">/</span>
         {parent && (
@@ -27,6 +27,7 @@ export default function PageHero({ title, parent }) {
         )}
         <span className="current">{title}</span>
       </div>
+      {children}
     </section>
   );
 }

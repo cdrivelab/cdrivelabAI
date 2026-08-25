@@ -34,8 +34,8 @@ export default function Faq({
   numbered = false,
   visual = null,
 }) {
-  const head = useReveal();
-  const list = useReveal();
+  const head = useReveal(0, "section-head");
+  const list = useReveal(0, "faq-list");
   const [openIndex, setOpenIndex] = useState(0);
 
   const items = faqs.map((item, i) => (
@@ -51,7 +51,7 @@ export default function Faq({
 
   return (
     <section className="section" id={sectionId}>
-      <div className="section-head" {...head}>
+      <div {...head}>
         <span className="kicker">{kicker}</span>
         <h2>{title}</h2>
         {description && <p>{description}</p>}
@@ -60,10 +60,10 @@ export default function Faq({
       {visual ? (
         <div className="faq-with-visual">
           <div className="faq-visual">{visual}</div>
-          <div className="faq-list" {...list}>{items}</div>
+          <div {...list}>{items}</div>
         </div>
       ) : (
-        <div className="faq-list" {...list}>{items}</div>
+        <div {...list}>{items}</div>
       )}
     </section>
   );

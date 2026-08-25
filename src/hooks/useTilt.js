@@ -1,7 +1,13 @@
 import { useEffect, useRef } from "react";
 
-export function useTilt() {
-  const ref = useRef(null);
+/**
+ * Subtle pointer-follow tilt. Pass an existing ref (e.g. the one from
+ * useReveal) to share a single ref with that hook — an element can only
+ * carry one ref, so attaching two separately would silently drop one.
+ */
+export function useTilt(externalRef) {
+  const localRef = useRef(null);
+  const ref = externalRef || localRef;
 
   useEffect(() => {
     const el = ref.current;
@@ -23,7 +29,7 @@ export function useTilt() {
       el.removeEventListener("pointermove", onMove);
       el.removeEventListener("pointerleave", onLeave);
     };
-  }, []);
+  }, [ref]);
 
   return ref;
 }

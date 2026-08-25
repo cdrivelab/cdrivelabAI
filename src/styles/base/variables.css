@@ -16,6 +16,7 @@
 
   --color-accent-1: #e0824f;
   --color-accent-2: #c25a34;
+  --color-success: #78c89b;
   --color-glow-1: #c25a34;
   --color-glow-2: #4a2414;
   --gradient-accent: linear-gradient(120deg, var(--color-accent-1), var(--color-accent-2));

@@ -1,6 +1,7 @@
+import ActionLink from "../../common/ActionLink.jsx";
 import { useReveal } from "../../../hooks/useReveal.js";
 import { useCounter } from "../../../hooks/useCounter.js";
-import { heroBento } from "../../../data/siteConfig.js";
+import { heroBento, CONTACT_HREF } from "../../../data/siteConfig.js";
 import Mockup from "../../common/Mockup.jsx";
 import "./hero.css";
 
@@ -40,10 +41,10 @@ const PlayIcon = () => (
 );
 
 function StatCard() {
-  const reveal = useReveal();
+  const reveal = useReveal(0, "bento-card bento-stat");
   const { ref: countRef, value } = useCounter(heroBento.stat.value);
   return (
-    <div className="bento-card bento-stat" {...reveal}>
+    <div {...reveal}>
       <div className="count" ref={countRef}>{value}</div>
       <div className="label">{heroBento.stat.label}</div>
     </div>
@@ -51,9 +52,9 @@ function StatCard() {
 }
 
 function VisualCard() {
-  const reveal = useReveal(100);
+  const reveal = useReveal(100, "bento-card bento-visual");
   return (
-    <div className="bento-card bento-visual" {...reveal}>
+    <div {...reveal}>
       <Mockup />
       <div className="label">{heroBento.visual.label}</div>
     </div>
@@ -61,13 +62,13 @@ function VisualCard() {
 }
 
 function QuoteCard() {
-  const reveal = useReveal(200);
+  const reveal = useReveal(200, "bento-card bento-quote");
   return (
-    <div className="bento-card bento-quote" {...reveal}>
+    <div {...reveal}>
       <div className="avatar-stack">
         {heroBento.quote.initials.map((i) => <div className="av" key={i}>{i}</div>)}
       </div>
-      <p>"{heroBento.quote.text}"</p>
+      <p>&ldquo;{heroBento.quote.text}&rdquo;</p>
       <div className="stars">
         {Array.from({ length: 5 }).map((_, i) => <StarIcon key={i} />)}
       </div>
@@ -76,25 +77,32 @@ function QuoteCard() {
 }
 
 function VideoCard() {
-  const reveal = useReveal(300);
+  const reveal = useReveal(300, "bento-card bento-video");
   return (
-    <div className="bento-card bento-video" {...reveal}>
+    <div {...reveal}>
       <div className="vicon"><PlayIcon /></div>
-      <div className="label" dangerouslySetInnerHTML={{ __html: heroBento.video.label }} />
+      <div className="label">
+        {heroBento.video.label.map((line, i) => (
+          <span key={line}>
+            {line}
+            {i < heroBento.video.label.length - 1 && <br />}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
 
 export default function Hero() {
-  const badge = useReveal();
+  const badge = useReveal(0, "badge hero-badge");
   const heading = useReveal(80);
   const lead = useReveal(160);
-  const actions = useReveal(240);
+  const actions = useReveal(240, "hero-actions");
 
   return (
     <>
       <section className="hero" id="top">
-        <div className="badge hero-badge">
+        <div {...badge}>
           <SparkleIcon />
           Smart AI. Real Results.
         </div>
@@ -110,15 +118,15 @@ export default function Hero() {
           that drive real growth.
         </p>
 
-        <div className="hero-actions" {...actions}>
-          <a href="#contact" className="btn btn-primary">
+        <div {...actions}>
+          <ActionLink href={CONTACT_HREF} className="btn btn-primary">
             Build With AI
             <span className="icon-circle"><ArrowIcon /></span>
-          </a>
-          <a href="#contact" className="btn btn-light">
+          </ActionLink>
+          <ActionLink href={CONTACT_HREF} className="btn btn-light">
             Contact Us
             <span className="icon-circle"><ArrowIcon /></span>
-          </a>
+          </ActionLink>
         </div>
       </section>
 

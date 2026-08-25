@@ -1,5 +1,6 @@
+import ActionLink from "../../common/ActionLink.jsx";
 import { useReveal } from "../../../hooks/useReveal.js";
-import { highlightBand } from "../../../data/siteConfig.js";
+import { highlightBand, CONTACT_HREF } from "../../../data/siteConfig.js";
 import "./highlight-band.css";
 
 const ArrowIcon = () => (
@@ -13,7 +14,7 @@ const PlayIcon = () => (
 
 export default function HighlightBand() {
   const copy = useReveal();
-  const visual = useReveal(100);
+  const visual = useReveal(100, "highlight-visual");
 
   return (
     <section className="section" style={{ paddingTop: 0 }}>
@@ -24,12 +25,12 @@ export default function HighlightBand() {
           <div className="pill-row">
             {highlightBand.pills.map((pill) => <span className="pill" key={pill}>{pill}</span>)}
           </div>
-          <a href="#contact" className="btn btn-primary">
+          <ActionLink href={CONTACT_HREF} className="btn btn-primary">
             Get in Touch
             <span className="icon-circle"><ArrowIcon /></span>
-          </a>
+          </ActionLink>
         </div>
-        <div className="highlight-visual" {...visual}>
+        <div {...visual}>
           <div className="vicon"><PlayIcon /></div>
         </div>
       </div>

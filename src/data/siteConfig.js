@@ -2,77 +2,55 @@ export const siteConfig = {
   name: "C-DriveLab",
   tagline: "Real Intelligence for Real Business",
   location: "Bhubaneswar, Odisha, India",
-  email: "hello@cdrivelab.com",
+  email: "cdrivelab@gmail.com",
+  /*
+    Where the contact form sends enquiries.
+
+    A static site has no server, so it cannot send email on its own — it
+    needs a form service. While this is empty the form falls back to opening
+    the visitor's mail client and showing the message to copy, which is a
+    workaround, not a substitute: enquiries are not recorded anywhere.
+
+    To turn it on, pick one and fill both fields below.
+
+      Web3Forms   https://web3forms.com  (no account; email yourself a key)
+        contactEndpoint: "https://api.web3forms.com/submit"
+        contactEndpointFields: { access_key: "YOUR-ACCESS-KEY" }
+
+      Formspree   https://formspree.io   (free tier: 50 submissions/month)
+        contactEndpoint: "https://formspree.io/f/YOUR-FORM-ID"
+        contactEndpointFields: {}
+
+    Either accepts a JSON POST of { name, email, company, topic, message }
+    and emails it on to the address you register. No other code changes.
+  */
+  contactEndpoint: "",
+  contactEndpointFields: {},
   footerBlurb:
     "We help businesses put AI to work as real infrastructure — consulting, automation, and agentic systems built for outcomes you can measure.",
 };
 
-// export const navLinks = [
-//   {
-//     label: "Home",
-//     href: "#top",
-//     active: true,
-//     dropdown: [
-//       { label: "Overview", href: "#top" },
-//       { label: "Highlights", href: "#bento" },
-//     ],
-//   },
-//   { label: "About Us", href: "#about" },
-//   { label: "Services", href: "#services" },
-//   { label: "Blog", href: "#blog" },
-//   {
-//     label: "Pages",
-//     href: "#faq",
-//     dropdown: [
-//       { label: "How It Works", href: "#process" },
-//       { label: "FAQs", href: "#faq" },
-//     ],
-//   },
-//   { label: "Contact Us", href: "#contact" },
-// ];
+/** Every CTA on the site points here. */
+export const CONTACT_HREF = "/contact";
 
-// export const offCanvasLinks = [
-//   { label: "Home", href: "#top" },
-//   { label: "About Us", href: "#about" },
-//   { label: "Services", href: "#services" },
-//   { label: "Blog", href: "#blog" },
-//   { label: "How It Works", href: "#process" },
-//   { label: "FAQs", href: "#faq" },
-//   { label: "Contact Us", href: "#contact" },
-// ];
+export const contactPage = {
+  kicker: "Contact",
+  heading: "Tell us what you're trying to fix.",
+  body: "Send us a short note about the problem and we'll come back with an honest read on whether AI helps — and what it would take. No obligation, no sales sequence.",
+  topics: [
+    "AI Strategy & Consulting",
+    "Process Automation",
+    "Agentic Systems",
+    "Data & Analytics",
+    "Product Development",
+    "Something else",
+  ],
+  responseNote: "We usually reply within two working days.",
+};
 
-// export const navLinks = [
-//   {
-//     label: "Home",
-//     href: "/",
-//     dropdown: [
-//       { label: "Overview", href: "/" },
-//       { label: "Highlights", href: "#bento" },
-//     ],
-//   },
-//   { label: "About Us", href: "/about" },
-//   { label: "Services", href: "#services" },
-//   { label: "Blog", href: "#blog" },
-//   {
-//     label: "Pages",
-//     href: "#faq",
-//     dropdown: [
-//       { label: "How It Works", href: "#process" },
-//       { label: "FAQs", href: "#faq" },
-//     ],
-//   },
-//   { label: "Contact Us", href: "#contact" },
-// ];
 
-// export const offCanvasLinks = [
-//   { label: "Home", href: "/" },
-//   { label: "About Us", href: "/about" },
-//   { label: "Services", href: "#services" },
-//   { label: "Blog", href: "#blog" },
-//   { label: "How It Works", href: "#process" },
-//   { label: "FAQs", href: "#faq" },
-//   { label: "Contact Us", href: "#contact" },
-// ];
+
+
 export const navLinks = [
   {
     label: "Home",
@@ -84,6 +62,7 @@ export const navLinks = [
   },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services", mega: true },
+  { label: "Products", href: "/products" },
   { label: "Blog", href: "#blog" },
   {
     label: "Pages",
@@ -93,17 +72,18 @@ export const navLinks = [
       { label: "FAQs", href: "#faq" },
     ],
   },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export const offCanvasLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Products", href: "/products" },
   { label: "Blog", href: "#blog" },
   { label: "How It Works", href: "#process" },
   { label: "FAQs", href: "#faq" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 export const partnerLogos = [
   "Ridgeline",
@@ -123,7 +103,7 @@ export const heroBento = {
     initials: ["JR", "MK", "TS", "AL"],
     text: "They shipped something our team actually kept using after go-live.",
   },
-  video: { label: "Always-on AI agents,<br/>working past office hours" },
+  video: { label: ["Always-on AI agents,", "working past office hours"] },
 };
 
 export const services = [
@@ -191,32 +171,18 @@ export const faqs = [
   { q: "Can our team maintain it after you leave?", a: "Yes — every build includes documentation and a handover session, and we offer ongoing training for teams who want to manage systems in-house." },
 ];
 
-// export const footerColumns = {
-//   company: [
-//     { label: "About Us", href: "#about" },
-//     { label: "Careers", href: "#" },
-//     { label: "Blog", href: "#blog" },
-//     { label: "Contact", href: "#contact" },
-//   ],
-//   services: [
-//     { label: "AI Consulting", href: "#services" },
-//     { label: "Automation", href: "#services" },
-//     { label: "Agentic Systems", href: "#services" },
-//     { label: "Training", href: "#services" },
-//   ],
-// };
 export const footerColumns = {
   company: [
     { label: "About Us", href: "/about" },
-    { label: "Careers", href: "#" },
+    { label: "Products", href: "/products" },
     { label: "Blog", href: "#blog" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact", href: "/contact" },
   ],
   services: [
-    { label: "AI Consulting", href: "#services" },
-    { label: "Automation", href: "#services" },
-    { label: "Agentic Systems", href: "#services" },
-    { label: "Training", href: "#services" },
+    { label: "AI Consulting", href: "/services/ai-strategy-consulting" },
+    { label: "Automation", href: "/services/ai-workflow-automation" },
+    { label: "Agentic Systems", href: "/services/ai-agent-development" },
+    { label: "All Services", href: "/services" },
   ],
 };
 /* --- About page content --- */
@@ -241,26 +207,6 @@ export const approachStats = [
   { value: 15, label: "Team Specialists" },
 ];
 
-// export const coreFeatures = [
-//   {
-//     title: "Intelligent Automation",
-//     description: "Automate repetitive tasks and workflows to save time and reduce manual effort.",
-//   },
-//   {
-//     title: "Advanced Data Analytics",
-//     description: "Turn complex data into clear insights for better business decisions.",
-//     miniStat: "99% Data Accuracy Rate",
-//   },
-//   {
-//     title: "Agentic Systems",
-//     description: "AI agents that take real action in your workflows, not just chat interfaces that answer.",
-//   },
-//   {
-//     title: "Seamless Integration",
-//     description: "We integrate AI solutions into the systems you already run, not around them.",
-//     miniStat: "API-first by default",
-//   },
-// ];
 export const aboutIntro = {
   kicker: "About Our Agency",
   heading: "Transforming Bhubaneswar businesses with practical AI, automation, and honest engineering.",

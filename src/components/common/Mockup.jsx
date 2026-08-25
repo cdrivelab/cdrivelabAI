@@ -1,5 +1,5 @@
-// import "./mockup.css";
 import "./common-ui.css";
+
 export default function Mockup() {
   return (
     <div className="mockup">

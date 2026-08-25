@@ -7,12 +7,12 @@ const PlayIcon = () => (
 );
 
 export default function VideoCta() {
-  const reveal = useReveal();
+  const reveal = useReveal(0, "video-cta");
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section className="section" style={{ paddingTop: "20px" }}>
-      <div className="video-cta" {...reveal}>
+      <div {...reveal}>
         <h2>See how an AI agent handles a real workflow, start to finish.</h2>
         <button type="button" className="play-btn" aria-label="Play video" onClick={() => setIsOpen(true)}>
           <PlayIcon />

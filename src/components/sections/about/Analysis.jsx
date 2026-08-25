@@ -1,7 +1,8 @@
+import ActionLink from "../../common/ActionLink.jsx";
 import { useReveal } from "../../../hooks/useReveal.js";
 import Mockup from "../../common/Mockup.jsx";
 import RingStat from "../../common/RingStat.jsx";
-import { analysis } from "../../../data/siteConfig.js";
+import { analysis, CONTACT_HREF } from "../../../data/siteConfig.js";
 
 const CheckIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="#1a1108" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
@@ -14,7 +15,7 @@ const ArrowIcon = () => (
 
 export default function Analysis() {
   const copy = useReveal();
-  const visual = useReveal(100);
+  const visual = useReveal(100, "analysis-visual");
 
   return (
     <section className="section">
@@ -31,13 +32,13 @@ export default function Analysis() {
               </li>
             ))}
           </ul>
-          <a href="#contact" className="btn btn-primary">
+          <ActionLink href={CONTACT_HREF} className="btn btn-primary">
             Get in Touch
             <span className="icon-circle"><ArrowIcon /></span>
-          </a>
+          </ActionLink>
         </div>
 
-        <div className="analysis-visual" {...visual}>
+        <div {...visual}>
           <div className="ring r2" />
           <div className="ring r1" />
           <div style={{ position: "relative" }}>

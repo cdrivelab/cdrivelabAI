@@ -3,10 +3,10 @@ import ServiceIcon, { CATEGORY_ICONS } from "./ServiceIcon.jsx";
 import { CATEGORIES } from "../../data/services.js";
 
 export default function ServicesJourney({ active, onSelect }) {
-  const reveal = useReveal();
+  const reveal = useReveal(0, "journey");
 
   return (
-    <div className="journey" {...reveal}>
+    <div {...reveal}>
       {CATEGORIES.map((cat) => (
         <button
           type="button"

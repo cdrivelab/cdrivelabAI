@@ -1,0 +1,88 @@
+/*
+  About > Our Approach. Previously built entirely from inline styles, which
+  hid two bugs: the stat numbers used hyphenated keys ("-webkit-background-clip")
+  that React drops, leaving `color: transparent` text invisible, and the second
+  approach card was replaced by an empty divider div.
+*/
+
+.approach-grid {
+    align-items: start;
+    gap: 32px;
+}
+
+.approach-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.approach-lead {
+    margin-top: 8px;
+    font-size: 15.5px;
+    line-height: 1.75;
+}
+
+.approach-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.approach-panel {
+    background: linear-gradient(160deg, var(--color-bg-card-2), #120d08);
+    border: 1px solid var(--color-line);
+    border-radius: 24px;
+    padding: 40px 32px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+}
+
+.approach-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.approach-stat {
+    text-align: center;
+}
+
+.approach-stat+.approach-stat {
+    border-left: 1px solid var(--color-line);
+}
+
+.approach-stat__value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(26px, 3vw, 40px);
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.approach-stat__label {
+    margin-top: 8px;
+    color: var(--color-ink-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+}
+
+.approach-note {
+    padding-top: 24px;
+    border-top: 1px solid var(--color-line);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+@media (max-width: 960px) {
+    .approach-panel {
+        min-height: 0;
+    }
+}

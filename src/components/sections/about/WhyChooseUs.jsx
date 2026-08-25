@@ -11,11 +11,11 @@ const icons = [
 ];
 
 export default function WhyChooseUs() {
-  const head = useReveal();
+  const head = useReveal(0, "section-head");
 
   return (
-    <section className="section" id="about">
-      <div className="section-head" {...head}>
+    <section className="section" id="why-choose-us">
+      <div {...head}>
         <span className="kicker">Why Choose Us</span>
         <h2>Why we deliver better results</h2>
         <p>We deliver reliable, scalable AI solutions built to solve real business problems and drive measurable growth — with a focus on precision and long-term partnership over one-off projects.</p>
