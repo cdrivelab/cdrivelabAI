@@ -1,0 +1,46 @@
+.ring-stat {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.ring-stat__svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ring-stat__track {
+    fill: none;
+    stroke: var(--color-line);
+    stroke-width: 8;
+}
+
+.ring-stat__fill {
+    fill: none;
+    stroke: var(--color-accent-1);
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+.ring-stat__center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.ring-stat__value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--color-ink);
+}
+
+.ring-stat__label {
+    font-size: 10px;
+    color: var(--color-ink-muted);
+    margin-top: 2px;
+}

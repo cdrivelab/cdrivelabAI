@@ -1,0 +1,109 @@
+.video-cta {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    padding: 100px 24px;
+    text-align: center;
+    background: linear-gradient(135deg, #3a2013, #120d08 55%, var(--color-glow-2));
+    background-size: 220% 220%;
+    animation: videoLoop 10s ease infinite;
+    border: 1px solid var(--color-line);
+}
+
+.video-cta h2 {
+    font-size: clamp(26px, 3.4vw, 42px);
+    max-width: 640px;
+    margin: 0 auto 34px;
+}
+
+.play-btn {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(242, 236, 224, 0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(242, 236, 224, 0.25);
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.play-btn:hover {
+    transform: scale(1.08);
+    background: rgba(242, 236, 224, 0.2);
+}
+
+.play-btn svg {
+    width: 22px;
+    height: 22px;
+    margin-left: 3px;
+}
+
+.video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    background: rgba(4, 4, 10, 0.88);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.video-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-modal-box {
+    width: min(860px, 90vw);
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #3a2013, #120d08, var(--color-glow-2));
+    background-size: 220% 220%;
+    animation: videoLoop 8s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-line);
+}
+
+.video-modal-box p {
+    color: var(--color-ink-secondary);
+    font-size: 14px;
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-line);
+    background: rgba(242, 236, 224, 0.06);
+    color: var(--color-ink);
+    cursor: pointer;
+}
+
+@keyframes videoLoop {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

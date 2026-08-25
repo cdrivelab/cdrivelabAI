@@ -1,0 +1,272 @@
+body {
+  background: var(--color-bg);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-1);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Section shell --- */
+.section {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding: var(--space-3xl) var(--container-padding);
+}
+
+.section-head {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 56px;
+}
+
+.section-head p {
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 90px 20px;
+  }
+}
+
+/* --- Badge --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(242, 236, 224, 0.12);
+  background: rgba(242, 236, 224, 0.03);
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.badge svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-accent-1);
+}
+
+/* ============ STAR ICON SIZING ============
+   Prevents sparkle/badge icons from expanding to fill parent container.
+   Uses !important for specificity override.
+   Targets both Hero "Smart AI. Real Results." badge and About page badge.
+=========== */
+.badge.hero-badge svg,
+.badge.about-badge svg,
+.star-icon,
+.testimonial-card__inner .stars svg {
+  width: 14px !important;
+  height: 14px !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  min-width: 14px !important;
+  min-height: 14px !important;
+}
+
+/* Hero "Smart AI. Real Results." badge container */
+.badge.hero-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  padding: 9px 20px !important;
+  border-radius: 100px !important;
+  border: 1px solid rgba(242, 236, 224, 0.12) !important;
+  background: rgba(242, 236, 224, 0.03) !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+}
+
+/* About page badge container */
+.badge.about-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  padding: 9px 20px !important;
+  border-radius: 100px !important;
+  border: 1px solid rgba(242, 236, 224, 0.12) !important;
+  background: rgba(242, 236, 224, 0.03) !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+}
+
+/* Prevent stars from shrinking in flex layouts */
+.badge.hero-badge svg,
+.badge.about-badge svg {
+  flex-shrink: 0 !important;
+  min-width: 14px !important;
+  min-height: 14px !important;
+}
+
+/* Kept for reference - original .badge rules */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(242, 236, 224, 0.12);
+  background: rgba(242, 236, 224, 0.03);
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.badge svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-accent-1);
+}
+
+/* --- Buttons --- */
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s var(--ease-standard), box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.icon-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-circle svg {
+  width: 13px;
+  height: 13px;
+}
+
+.btn-primary {
+  background: var(--gradient-accent);
+  color: var(--color-on-accent);
+  padding: 9px 9px 9px 20px;
+  box-shadow: 0 8px 26px rgba(194, 90, 52, 0.32);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 12px 32px rgba(194, 90, 52, 0.52);
+}
+
+.btn-primary .icon-circle {
+  background: rgba(12, 12, 24, 0.14);
+  color: var(--color-on-accent);
+}
+
+.btn-light {
+  background: #f4f4fb;
+  color: var(--color-on-accent);
+  padding: 9px 9px 9px 24px;
+}
+
+.btn-light .icon-circle {
+  background: var(--gradient-accent);
+  color: var(--color-on-accent);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+  padding: 9px 9px 9px 22px;
+}
+
+.btn-outline .icon-circle {
+  background: rgba(242, 236, 224, 0.08);
+  color: var(--color-ink);
+}
+
+/* --- Background atmosphere --- */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(242, 236, 224, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 236, 224, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black 10%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black 10%, transparent 75%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-glow {
+  position: fixed;
+  top: -12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 900px;
+  background: radial-gradient(circle at 50% 35%, var(--color-glow-1) 0%, var(--color-glow-2) 28%, transparent 65%);
+  opacity: 0.28;
+  filter: blur(70px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --- Reveal on scroll --- */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+[data-animate].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

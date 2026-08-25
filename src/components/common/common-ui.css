@@ -1,0 +1,347 @@
+/*
+  Consolidated styles for shared "common" components: Mockup, IconCard,
+  StatsGrid, CtaBand. Kept in one file (instead of one file per
+  component) so a partial copy-paste can't silently drop styles for
+  just one of them, the way it did before.
+*/
+
+/* --- Mockup (dashboard visual) --- */
+.mockup {
+    flex: 1;
+    border-radius: 14px;
+    background: linear-gradient(160deg, var(--color-bg-card-2), #120d08);
+    border: 1px solid var(--color-line-soft);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mockup-dot-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.mockup-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(242, 236, 224, 0.15);
+}
+
+.mockup-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 120px;
+    flex: 1;
+}
+
+.mockup-bars span {
+    flex: 1;
+    border-radius: 6px 6px 0 0;
+    background: var(--gradient-accent-reverse);
+    opacity: 0.85;
+    animation: barPulse 3.2s ease-in-out infinite;
+}
+
+.mockup-bars span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.mockup-bars span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.mockup-bars span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.mockup-bars span:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+.mockup-bars span:nth-child(6) {
+    animation-delay: 1s;
+}
+
+@keyframes barPulse {
+
+    0%,
+    100% {
+        transform: scaleY(0.7);
+    }
+
+    50% {
+        transform: scaleY(1);
+    }
+}
+
+/* --- IconCard + grid layouts --- */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.icon-card {
+    display: block;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-line);
+    border-radius: 18px;
+    padding: 30px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(194, 90, 52, 0.4);
+    box-shadow: 0 20px 44px rgba(194, 90, 52, 0.16);
+}
+
+.icon-chip {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: var(--gradient-accent-reverse);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.icon-chip svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.icon-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.icon-card p {
+    color: var(--color-ink-secondary);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.icon-card .mini-stat {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-accent-1);
+}
+
+@media (max-width: 960px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- StatsGrid --- */
+.stats-band {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-line);
+    border-radius: 24px;
+    padding: 52px 40px;
+    display: grid;
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item .count {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(28px, 3vw, 40px);
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.stat-item .label {
+    margin-top: 8px;
+    color: var(--color-ink-secondary);
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .stats-band {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* --- CtaBand --- */
+.cta-band {
+    text-align: center;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-line);
+    border-radius: 26px;
+    padding: 64px 32px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(194, 90, 52, 0.16), transparent 60%);
+    pointer-events: none;
+}
+
+.cta-band h2 {
+    position: relative;
+    font-size: clamp(26px, 3.4vw, 40px);
+    max-width: 640px;
+    margin: 0 auto 26px;
+}
+
+.cta-rating {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    color: var(--color-ink-secondary);
+    font-size: 14px;
+}
+
+.cta-rating .num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--color-accent-1);
+    font-size: 18px;
+}
+
+.cta-rating .stars {
+    display: flex;
+    gap: 3px;
+}
+
+.cta-rating .stars svg {
+    width: 14px;
+    height: 14px;
+    color: var(--color-accent-1);
+    flex-shrink: 0;
+    display: block;
+}
+
+.cta-band .btn {
+    position: relative;
+}
+
+/* --- Section rhythm: soft alternating tint, no hard edges --- */
+.section-tint {
+    position: relative;
+}
+
+.section-tint::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            transparent 0%,
+            rgba(30, 24, 16, 0.55) 15%,
+            rgba(30, 24, 16, 0.55) 85%,
+            transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+/* --- Avatar stack (shared: Hero bento-quote, About agency stat, feature badges) --- */
+.avatar-stack {
+    display: flex;
+}
+
+.avatar-stack .av {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--color-bg-card);
+    background: var(--gradient-accent-reverse);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-on-accent);
+    margin-left: -10px;
+    flex-shrink: 0;
+}
+
+.avatar-stack .av:first-child {
+    margin-left: 0;
+}
+
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 28px 0 32px;
+}
+
+.checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.check-mark {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--gradient-accent-reverse);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.check-mark svg {
+    width: 12px;
+    height: 12px;
+    display: block;
+}
+
+.checklist span:last-child {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-ink);
+    line-height: 1.5;
+}

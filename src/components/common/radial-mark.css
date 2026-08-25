@@ -1,0 +1,50 @@
+.radial-mark {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  animation: radial-spin 60s linear infinite;
+}
+
+.radial-mark__ring {
+  fill: none;
+  stroke: var(--color-line);
+  stroke-width: 1;
+}
+
+.radial-mark__ring--faint {
+  stroke: var(--color-line);
+  opacity: 0.6;
+}
+
+.radial-mark__tick {
+  stroke: var(--color-ink-muted);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.radial-mark__tick--major {
+  stroke: var(--color-ink);
+  stroke-width: 1.5;
+  opacity: 0.8;
+}
+
+.radial-mark__needle {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.radial-mark__hub {
+  fill: var(--color-accent);
+}
+
+@keyframes radial-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radial-mark {
+    animation: none;
+  }
+}

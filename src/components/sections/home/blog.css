@@ -1,0 +1,90 @@
+.blog-carousel {
+    position: relative;
+}
+
+.blog-track {
+    display: flex;
+    gap: 22px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.blog-card {
+    flex: 0 0 calc((100% - 44px) / 3);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-line);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.blog-thumb {
+    height: 170px;
+    background: linear-gradient(140deg, #2c1a0c, var(--color-on-accent) 60%, var(--color-glow-2));
+    position: relative;
+}
+
+.blog-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 30%, rgba(194, 90, 52, 0.35), transparent 55%);
+}
+
+.blog-body {
+    padding: 22px;
+}
+
+.blog-tag {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-accent-1);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.blog-body h3 {
+    font-size: 17px;
+    margin: 10px 0 8px;
+}
+
+.blog-body p {
+    font-size: 13.5px;
+    color: var(--color-ink-secondary);
+    line-height: 1.65;
+}
+
+.blog-meta {
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--color-ink-muted);
+}
+
+.blog-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.blog-dots button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-line);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, width 0.2s ease;
+}
+
+.blog-dots button.active {
+    background: var(--color-accent-1);
+    width: 22px;
+    border-radius: 5px;
+}
+
+@media (max-width: 900px) {
+    .blog-card {
+        flex: 0 0 100%;
+    }
+}

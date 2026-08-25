@@ -1,0 +1,64 @@
+:root {
+  /* --- Color --- */
+  --color-bg: #141109;
+  --color-bg-alt: #1a160e;
+  --color-bg-card: #1e1810;
+  --color-bg-card-2: #241d12;
+
+  --color-ink: #f2ece0;
+  --color-ink-secondary: #a89e8f;
+  --color-ink-muted: #71675b;
+  --color-on-accent: #1a1108;
+
+  --color-line: rgba(242, 236, 224, 0.09);
+  --color-line-strong: rgba(242, 236, 224, 0.16);
+  --color-line-soft: rgba(242, 236, 224, 0.06);
+
+  --color-accent-1: #e0824f;
+  --color-accent-2: #c25a34;
+  --color-glow-1: #c25a34;
+  --color-glow-2: #4a2414;
+  --gradient-accent: linear-gradient(120deg, var(--color-accent-1), var(--color-accent-2));
+  --gradient-accent-reverse: linear-gradient(90deg, var(--color-accent-2) 0%, var(--color-accent-1) 100%);
+  --color-accent-soft: rgba(224, 130, 79, 0.14);
+
+  /* --- Type --- */
+  --font-display: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --fs-h1: clamp(34px, 5.2vw, 70px);
+  --fs-h2: clamp(28px, 3.4vw, 44px);
+  --fs-body: 16.5px;
+  --fs-small: 14.5px;
+  --fs-eyebrow: 13px;
+
+  /* --- Spacing --- */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 80px;
+  --space-3xl: 120px;
+
+  /* --- Layout --- */
+  --container-max-width: 1280px;
+  --container-padding: 24px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 100px;
+
+  /* --- Motion --- */
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-fast: 200ms;
+  --duration-base: 350ms;
+  --duration-slow: 700ms;
+
+  --z-header: 200;
+  --z-offcanvas: 300;
+  --z-cursor: 9999;
+  --z-preloader: 10000;
+  --z-modal: 500;
+}

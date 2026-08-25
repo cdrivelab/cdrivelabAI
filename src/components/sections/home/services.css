@@ -1,0 +1,53 @@
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.icon-card {
+  display: block;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  padding: 30px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(194, 90, 52, 0.4);
+  box-shadow: 0 20px 44px rgba(194, 90, 52, 0.16);
+}
+
+.icon-chip {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: var(--gradient-accent-reverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.icon-chip svg {
+  width: 22px;
+  height: 22px;
+}
+
+.icon-card h3 {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.icon-card p {
+  color: var(--color-ink-secondary);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}

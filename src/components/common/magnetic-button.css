@@ -1,0 +1,26 @@
+.magnetic-btn {
+    transition: transform var(--duration-fast) var(--ease-out-soft);
+}
+
+.magnetic-btn__fill {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(120px circle at var(--fill-x, 50%) var(--fill-y, 50%),
+            rgba(255, 255, 255, 0.25),
+            transparent 70%);
+    opacity: 0;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.magnetic-btn:hover .magnetic-btn__fill {
+    opacity: 1;
+}
+
+.magnetic-btn__label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
