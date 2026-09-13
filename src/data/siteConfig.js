@@ -283,8 +283,8 @@ export const highlightBand = {
 
 export const teamMembers = [
   { initials: "PM", name: "Pranjal Mahapatra", role: "AI Solutions Architect" },
-  { initials: "AS", name: "Ananya Sahoo", role: "Data Scientist" },
-  { initials: "RN", name: "Rohit Nayak", role: "AI Engineer" },
+  { initials: "AS", name: "Chiranjibee Das", role: "Data Scientist" },
+  { initials: "RN", name: "Shivraj Sharma", role: "AI Engineer" },
 ];
 
 export const aboutFaqs = [
