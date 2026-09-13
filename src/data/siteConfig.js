@@ -86,14 +86,13 @@ export const offCanvasLinks = [
   { label: "Contact Us", href: "/contact" },
 ];
 export const partnerLogos = [
-  "Ridgeline",
-  "Bluepeak",
-  "Anchorpoint",
-  "Foundry & Co",
-  "Meridian",
-  "Harborline",
-  "Northstar",
-  "Odisha Foundry",
+  "Startup Odisha",
+  "Samsung",
+  "dun & bradstreet",
+  "Infosys",
+  "TCS",
+  "Wipro",
+  
 ];
 
 export const heroBento = {
